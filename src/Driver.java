@@ -8,7 +8,7 @@ public class Driver {
 		
 		if(!control.controlFromFile()){
 			for(String nextLine = userPrompt.nextLine(); !nextLine.equalsIgnoreCase("EXIT"); nextLine = userPrompt.nextLine())
-				simulator.input(nextLine);
+				simulator.input(nextLine.split(" "));
 		}
 		while(!fileBeenRead){
 			System.out.print("Enter the full file directory: ");
