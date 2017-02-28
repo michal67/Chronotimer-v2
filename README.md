@@ -9,6 +9,7 @@ Stuff that needs to be done:
    -Move tests into their own class (BRYCE)
    -Building Chronotimer (ROBERT / NICK)
    
+   
    -Finish Deliverables for Sprint 1
       -Use case descriptions/ Model (ARIS)
       -Sprint Retrospective (NICK)
