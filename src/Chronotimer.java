@@ -2,6 +2,7 @@ public class Chronotimer(){
   public Chronotimer(){
   }
   
+  //
   public void toggle(int channel){
     //TODO
   }
@@ -30,6 +31,8 @@ public class Chronotimer(){
     //TODO
   }
   
+  /* Returns a formatted String representing the run,
+     which is outputted by Simulator */
   public String print(){
     //TODO
   }
