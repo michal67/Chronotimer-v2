@@ -115,99 +115,21 @@ public class Competitor {
 		return null;
 	}
 
-	@Test
-	public void testCompetitorStart() {
-		Competitor a = new Competitor(1);
-		a.start(1000);
-		assertTrue(a.started);
-		assertEquals(a.startTime, 1000);
+	/* FOLLOWING METHODS ONLY USED FOR TESTING */
+	
+	public boolean getStarted(){
+		return started;
 	}
-
-	@Test
-	public void testCompetitorToString() {
-		Competitor a = new Competitor(1);
-		assertEquals(a.toString(), "Competitor: 1 --- Has not Started");
-
-		a.start(1000);
-		assertEquals(a.toString(), "Competitor: 1 --- DNF");
-
-		a.end(1001);
-		assertEquals(a.toString(), "Competitor: 1 --- 1");
+	
+	public boolean getFinished(){
+		return finished;
 	}
-
-	@Test
-	public void testCompetitorRunTime() {
-		Competitor a = new Competitor(1);
-		a.startTime = 1000;
-		a.started = true;
-		a.end(2000);
-		assertEquals(a.runTime(), 1000);
-
-		Competitor b = new Competitor(2);
-		b.startTime = 1000;
-		b.started = false;
-		b.end(2000);
-		assertEquals(b.runTime(), null);
-
-		Competitor c = new Competitor(3);
-		c.startTime = -1;
-		c.started = true;
-		c.end(2000);
-		assertEquals(c.runTime(), null);
-
-		Competitor d = new Competitor(4);
-		d.startTime = 1000;
-		d.started = true;
-		d.end(-1);
-		assertEquals(d.runTime(), null);
-
-		Competitor e = new Competitor(5);
-		e.startTime = -1;
-		e.started = true;
-		e.end(2000);
-		assertEquals(d.runTime(), null);
-
-		Competitor f = new Competitor(6);
-		f.startTime = 1000;
-		f.started = true;
-		f.end(-1);
-		assertEquals(f.runTime(), null);
-
-		Competitor g = new Competitor(7);
-		g.startTime = 2000;
-		g.started = true;
-		g.end(1000);
-		assertEquals(g.runTime(), null);
+	
+	public void setStarted(){
+		started = true;
 	}
-
-	@Test
-	public void testCompetitorEnd() {
-		Competitor a = new Competitor(1);
-		a.startTime = 1000;
-		a.started = true;
-		a.end(2000);
-		assertEquals(a.endTime, 2000);
-		assertEquals(a.finished, true);
-
-		Competitor b = new Competitor(2);
-		b.startTime = 1000;
-		b.started = true;
-		b.end(-1);
-		assertEquals(b.endTime, -1);
-		assertEquals(b.finished, false);
-
-		Competitor c = new Competitor(3);
-		c.startTime = -1;
-		c.started = false;
-		c.end(2000);
-		assertEquals(b.endTime, -1);
-		assertEquals(b.finished, false);
-
-		Competitor d = new Competitor(3);
-		d.startTime = -1;
-		d.started = true;
-		d.end(2000);
-		assertEquals(b.endTime, -1);
-		assertEquals(b.finished, false);
+	
+	public void setFinished(){
+		finished = true;
 	}
 }
