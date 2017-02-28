@@ -156,10 +156,10 @@ public class TestRun {
     	assertTrue(r.removeCompetitorByBib(1).equals("[bib:1,start:1000,end:-,final:DNF]"));
      
     	r.addCompetitor(3);
-    	r.get(0).startTime = 1000000000;
-    	r.get(0).endTime = 200000000;
-    	r.get(0).started = true;
-    	r.get(0).finished = true;
+    	r.competitors.get(0).startTime = 1000000000;
+    	r.competitors.get(0).endTime = 200000000;
+    	r.competitors.get(0).started = true;
+    	r.competitors.get(0).finished = true;
     	assertTrue(r.removeCompetitorByBib(3).equals("[bib:3,start:1000000000,end:2000000000,final:1.000 Seconds]"));
     }
 }
