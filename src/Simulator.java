@@ -1,7 +1,9 @@
 public class Simulator(){
+  Chronotimer chronotimer;
   boolean powerOn;
   
   public Simulator(){
+    chronotimer = new Chronotimer();
   }
   
   public void input(String[] input){
@@ -22,7 +24,6 @@ public class Simulator(){
     else if(input[0].equalsIgnoreCase("NUM"))
       //
     else if(input[0].equalsIgnoreCase("PRINT"))
-      //
-      
+      chronotimer.print();
   }
 }
