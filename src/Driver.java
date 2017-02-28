@@ -5,7 +5,6 @@ public class Driver {
 		Simulator simulator = new Simulator();
 		Scanner userPrompt = new Scanner(System.in);
 		boolean fileBeenRead = false;
-		String nextLine;
 		
 		if(!control.controlFromFile()){
 			while(true)
@@ -17,10 +16,10 @@ public class Driver {
 				BufferedReader reader = new BufferedReader(new FileReader(userPrompt.nextLine()));
 				for(String nextLine = reader.nextLine(); nextLine != null; nextLine = reader.nextLine())
 					simulator.input(nextLine);
+				fileBeenRead = true;
 			}
-			catch (FileNotFoundException e){
+			catch (FileNotFoundException e)
 				System.out.println("Invalid filepath");
-			}
 		}
 	}
 }
