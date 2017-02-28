@@ -4,26 +4,29 @@ public class Simulator(){
   
   public Simulator(){
     chronotimer = new Chronotimer();
+    powerOn = false;
   }
   
   public void input(String[] input){
     if(input[0].equalsIgnoreCase("POWER"))
       powerOn = !powerOn;
-    else if(input[0].equalsIgnoreCase("TOG"))
-      //
-    else if(input[0].equalsIgnoreCase("TIME"))
-      //
-    else if(input[0].equalsIgnoreCase("TRIG"))
-      //
-    else if(input[0].equalsIgnoreCase("EVENT"))
-      //
-    else if(input[0].equalsIgnoreCase("NEWRUN"))
-      //
-    else if(input[0].equalsIgnoreCase("ENDRUN"))
-      //
-    else if(input[0].equalsIgnoreCase("NUM"))
-      //
-    else if(input[0].equalsIgnoreCase("PRINT"))
-      chronotimer.print();
+    else if(powerOn){
+      if(input[0].equalsIgnoreCase("TOG"))
+        chronotimer.toggle( Integer.parseInt( input[1]));
+      else if(input[0].equalsIgnoreCase("TIME"))
+        chronotimer.setTime( input[1]);
+      else if(input[0].equalsIgnoreCase("TRIG"))
+        chronotimer.trigger( Integer.parseInt( input[1]));
+      else if(input[0].equalsIgnoreCase("EVENT"))
+        chronotimer.setEvent( input[1]);
+      else if(input[0].equalsIgnoreCase("NEWRUN"))
+        chronotimer.newRun();
+      else if(input[0].equalsIgnoreCase("ENDRUN"))
+        chronotimer.endRun();
+      else if(input[0].equalsIgnoreCase("NUM"))
+        chronotimer.addCompetitor( Integer.parseInt(input[1]));
+      else if(input[0].equalsIgnoreCase("PRINT"))
+        System.out.println( chronotimer.print());
+    }
   }
 }
