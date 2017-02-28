@@ -100,45 +100,32 @@ public class TestRun {
     	r.addCompetitor(7);
 
     	r.cur = r.competitors.get(0);
-    	r.cur.startTime = 1000000000;
-    	r.cur.started = true;
+    	r.cur.start(1000000000);
+    	r.cur.setStarted(); 
     	r.cur.end(2000000000);
     	assertTrue(r.runTime().equals("1.000 Seconds"));
 	      
-    	cur = r.get(1);
-    	cur.startTime = 1000;
-    	cur.started = false;
-    	cur.end(2000);
+    	r.cur = r.competitors.get(1);
+    	r.cur.start(1000);
+    	r.cur.end(2000);
     	assertEquals(r.runTime(), null);
 	      
-    	cur = r.get(2);
-    	c.startTime = -1;
-    	c.started = true;
-    	c.end(2000);
+    	r.cur = r.competitors.get(2);
+    	r.cur.start(-1);
+    	r.cur.setStarted();
+    	r.cur.end(2000);
     	assertEquals(r.runTime(), null);
 	
-    	cur = r.get(3);
-    	cur.startTime = 1000;
-    	cur.started = true;
-    	cur.end(-1);
+    	r.cur = r.competitors.get(3);
+    	r.cur.start(1000);
+    	r.cur.setStarted();
+    	r.cur.end(-1);
     	assertEquals(r.runTime(), null);
 	
-    	cur = r.get(4);	      	
-    	cur.startTime = null;
-    	cur.started = true;
-    	cur.end(2000);
-    	assertEquals(r.runTime(), null);
-	
-    	cur = r.get(5);
-    	cur.startTime = 1000;
-    	cur.started = true;
-    	cur.end(null);
-    	assertEquals(r.runTime(), null);
-	
-    	cur = r.get(6);
-    	cur.startTime = 2000;
-    	cur.started = true;
-    	cur.end(1000);
+    	r.cur = r.competitors.get(6);
+    	r.cur.start(2000);
+    	r.cur.setStarted();
+    	r.cur.end(1000);
     	assertEquals(r.runTime(), null);
     }
     
@@ -151,15 +138,15 @@ public class TestRun {
     	assertTrue(r.removeCompetitorByBib(1).equals(null));
      
     	r.addCompetitor(1);
-    	r.get(0).startTime = 1000;
-    	r.get(0).started = true;
+    	r.competitors.get(0).start(1000);
+    	r.competitors.get(0).setStarted();
     	assertTrue(r.removeCompetitorByBib(1).equals("[bib:1,start:1000,end:-,final:DNF]"));
      
     	r.addCompetitor(3);
-    	r.competitors.get(0).startTime = 1000000000;
-    	r.competitors.get(0).endTime = 200000000;
-    	r.competitors.get(0).started = true;
-    	r.competitors.get(0).finished = true;
+    	r.competitors.get(0).start(1000000000);
+    	r.competitors.get(0).end(2000000000);
+    	r.competitors.get(0).setStarted();
+    	r.competitors.get(0).setFinished();
     	assertTrue(r.removeCompetitorByBib(3).equals("[bib:3,start:1000000000,end:2000000000,final:1.000 Seconds]"));
     }
 }
