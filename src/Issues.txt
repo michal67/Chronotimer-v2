@@ -1,1 +1,9 @@
 
+Stuff that needs to be done:
+   -Run needs to be fixed
+   -Finish tests for run
+   -Finish tests for competitor
+   -Simulation needs to be made according to the given test files
+   -Move tests into their own class
+   -Finish Deliverables for Sprint 1
+   -Finish Deliverables for Lab 6
