@@ -1,6 +1,7 @@
 public class Chronotimer(){
   ArrayList<boolean> channels;
   long startTime;
+  long offsetTime;
   Run run;
   
   public Chronotimer(){
@@ -33,7 +34,7 @@ public class Chronotimer(){
   }
   
   public void setTime(String time){ //Formatted as HH:MM:SS.M
-    //TODO
+    String[] tim 
   } 
   
   public void setEvent(String event){
