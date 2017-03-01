@@ -4,7 +4,7 @@ public class Chronotimer(){
   Run run;
   
   public Chronotimer(){
-    for(int i=0; i<4; i++)
+    for(int i=0; i<8; i++)
       channels.add(false);
     startTime = /* get time */
   }
