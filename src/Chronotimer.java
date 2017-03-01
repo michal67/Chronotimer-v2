@@ -11,8 +11,8 @@ public class Chronotimer(){
   }
   
   //
-  public void toggle(int channel){
-    //TODO
+  public void toggle(int channel){ //1-4
+    channels.get(channel-1) = !channels.get(channel-1);
   }
   
   public void trigger(int channel){
