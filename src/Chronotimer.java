@@ -1,19 +1,19 @@
 public class Chronotimer(){
   ArrayList<boolean> channels;
   long startTime;
-  
+  Run run;
   
   public Chronotimer(){
     for(int i=0; i<4; i++)
       channels.add(false);
     startTime = /* get time */
-      
   }
   
   //
   public void toggle(int channel){ //1-4
     channels.get(channel-1) = !channels.get(channel-1);
   }
+  
   
   public void trigger(int channel){
     //TODO
