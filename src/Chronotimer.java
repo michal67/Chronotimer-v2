@@ -1,4 +1,8 @@
 public class Chronotimer(){
+  ArrayList<boolean> channels;
+  long startTime;
+  
+  
   public Chronotimer(){
   }
   
