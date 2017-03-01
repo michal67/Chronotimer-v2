@@ -6,20 +6,30 @@ public class Chronotimer(){
   public Chronotimer(){
     for(int i=0; i<8; i++)
       channels.add(false);
-    startTime = /* get time */
+    startTime = System.nanoTime();
+  }
+  
+  public Chronotimer(long time){
+    for(int i=0; i<8; i++)
+      channels.add(false);
+    startTime = time;
   }
   
   //
   public void toggle(int channel){ //1-4
-    channels.get(channel-1) = !channels.get(channel-1);
+    channels.get(channel - 1) = !channels.get( channel - 1);
   }
   
   
-  public void trigger(int channel){
-    //TODO
-  }
+  public void trigger(int channel){ trigger(channel, startTime - System.nanoTime()); }
   
   public void trigger(int channel, long time){
+    if(channels.get( channel - 1)){
+      if(channel==1)
+        run.start(time);
+      else if(channel==2)
+        run.end(time);
+    }
   }
   
   public void setTime(String time){ //Formatted as HH:MM:SS.M
