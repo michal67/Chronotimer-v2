@@ -19,6 +19,9 @@ public class Chronotimer(){
     //TODO
   }
   
+  public void trigger(int channel, long time){
+  }
+  
   public void setTime(String time){ //Formatted as HH:MM:SS.M
     //TODO
   } 
