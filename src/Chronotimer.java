@@ -34,14 +34,7 @@ public class Chronotimer(){
     //TODO
   }
   
-  public void newRun(long time){
-  }
-  
   public void endRun(){
-  }
-  
-  public void endRun(long time){
-    //TODO
   }
   
   public void addCompetitor(int bib){
