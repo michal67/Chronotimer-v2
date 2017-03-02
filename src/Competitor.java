@@ -18,15 +18,6 @@ public class Competitor {
 		started = false;
 		finished = false;
 	}
-	
-	/** IGNORE TESTING CONSTRUCTOR*/
-	public Competitor(){
-		bibNum = 0;
-		startTime = -1;
-		endTime = -1;
-		started = false;
-		finished = false;
-	}
 
 	public long getStartTime() {
 		return startTime;
@@ -45,6 +36,11 @@ public class Competitor {
 	 * to true.
 	 */
 	public void start(long t) {
+		if(t < 0){
+			startTime = -1;
+			started = false;
+			return;
+		}
 		this.startTime = t;
 		started = true;
 	}
@@ -58,8 +54,10 @@ public class Competitor {
 		if (startTime > time) {
 			this.endTime = -1;
 			finished = false;
-
-		} else {
+		} else if(time < 0){
+			endTime = -1;
+			finished = false;
+		}else {
 			this.endTime = time;
 			finished = true;
 		}
@@ -83,6 +81,8 @@ public class Competitor {
 	 * @return long - The total time of the run
 	 */
 	public long runTime() {
+		if(!started || !finished) return -1;
+		if(startTime == -1 || endTime == -1) return -1;
 		return endTime - startTime;
 	}
 
@@ -96,11 +96,11 @@ public class Competitor {
 	public String toString() {
 		if ((started == true) && (finished == true)) {
 			String finalTime = Time.parseTime(endTime - startTime);
-			return "[bib:" + bibNum + ",start:" + startTime + ",end:" + endTime + ",final:" + finalTime + "]";
+			return "Competitor: " + bibNum + " --- " + finalTime;
 		} else if ((started == true && finished == false)) {
-			return "[bib:" + bibNum + ",start:" + startTime + ",end:-,final:DNF]";
+			return "Competitor: " + bibNum + " --- DNF";
 		} else {
-			return "[bib:" + bibNum + " - Has Not started]";
+			return "Competitor: " + bibNum + " --- Has Not Started";
 		}
 	}
 
@@ -124,11 +124,20 @@ public class Competitor {
 		return finished;
 	}
 	
-	public void setStarted(){
+	public void setStartedTrue(){
 		started = true;
 	}
 	
-	public void setFinished(){
+	public void setFinishedTrue(){
 		finished = true;
 	}
+	
+	public void setStartedFalse(){
+		started = false;
+	}
+	
+	public void setFinishedFalse(){
+		finished = false;
+	}
+	
 }
