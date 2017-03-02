@@ -1,70 +1,61 @@
+package src;
+
 import static org.junit.Assert.*;
 
 import org.junit.Test;
 
 public class TestRun {
-
+	
     @Test
     public void testCompetitorRunTime(){
-     
+    	
     }
     
     @Test
     public void testRunEnd(){
     	Run run = new Run();
     	run.addCompetitor(1);
-    	run.start(1000);
-    	assertEquals(run.end(1001), 1);
+    	run.start(1000000000);
+    	run.end(200000000);
+    	assertEquals(2000000000, run.getEndTime());
+    	assertEquals(true, run.getFinished());
      
     	run = new Run();
     	run.addCompetitor(1);
     	run.start(1000);
-    	assertEquals(run.end(null), null);
+    	run.end(-1);
+    	assertEquals(-1, run.getEndTime());
+    	assertEquals(false, run.getFinished());
      
     	run = new Run();
     	run.addCompetitor(1);
-    	assertEquals(run.end(1000), -1);
-     
-    	run.addCompetitor(1);
-    	run.start(1000);
-    	assertEquals(run.end(1001, 0), 1);
+    	run.end(1000000000);
+    	assertEquals(-1, run.getEndTime());
+    	assertEquals(false, run.getFinished());
      
     	run = new Run();
     	run.addCompetitor(1);
-    	run.start(1000);
-    	assertEquals(run.end(null, 0), null);
+    	run.start(-1);
+    	run.end(1000000000);
+    	assertEquals(-1, run.getEndTime());
+    	assertEquals(false, run.getFinished());
      
     	run = new Run();
     	run.addCompetitor(1);
-    	assertEquals(run.end(1000, 0), -1);
+    	run.start(2000000000);
+    	run.end(1000000000);
+    	assertEquals(-1, run.getEndTime());
+    	assertEquals(false, run.getFinished());
     }
     
-    @Test
-    public void testRunSwapNext(){
-    	Run run = new Run();
-    	for(int i = 0; i < 100; i++)
-    	run.addCompetitor(i);
-    	run.swapNext();
-    	assertEquals(competitor.indexOf(new Competitor(0), 99));
-    	assertEquals(competitor.indexOf(new Competitor(99), 0));
-     
-    	run = new Run();
-    	run.swapNext();
-    	run.addCompetitor(0);
-    	run.swapNext();
-    	run.addCompetitor(1);
-    	run.swapNext();
-    	assertEquals(competitor.indexOf(new Competitor(0), 1));
-    	assertEquals(competitor.indexOf(new Competitor(1), 0));
-    }
-    
+   
     @Test
     public void testStart(){
     	//start(Time t)
     	Run r = new Run();
     	r.addCompetitor(1);
     	r.cur = r.competitors.get(0);
-    	r.start(new Time());
+    	r.start(1000000000);
     	assertFalse(r.cur.getStartTime() == -1);
     	assertTrue(r.cur.getStarted());
     }
@@ -76,16 +67,15 @@ public class TestRun {
     	r.addCompetitor(1);
     	r.addCompetitor(2);
     	r.addCompetitor(3);
-    	Time t = new Time();
-    	r.start(t, 0);
-    	r.start(t, 1);
-    	r.start(t, 2);
-    	assertFalse(r.competitors.get(0).getStartTime() == -1);
-    	assertFalse(r.competitors.get(1).getStartTime() == -1);
-    	assertFalse(r.competitors.get(2).getStartTime() == -1);
-    	assertTrue(r.competitors.get(0).getStarted());
-    	assertTrue(r.competitors.get(1).getStarted());
-    	assertTrue(r.competitors.get(2).getStarted());
+    	r.start(1000000000, 0);
+    	r.start(2000000000, 1);
+    	r.start(3000000000L, 2);
+    	assertEquals(r.getCompetitors().get(0).getStartTime(), 1000000000);
+    	assertEquals(r.getCompetitors().get(1).getStartTime(), 2000000000);
+    	assertEquals(r.getCompetitors().get(2).getStartTime(), 3000000000L);
+    	assertTrue(r.getCompetitors().get(0).getStarted());
+    	assertTrue(r.getCompetitors().get(1).getStarted());
+    	assertTrue(r.getCompetitors().get(2).getStarted());
     }
     
     @Test
@@ -149,6 +139,30 @@ public class TestRun {
     	r.competitors.get(0).setFinished();
     	assertTrue(r.removeCompetitorByBib(3).equals("[bib:3,start:1000000000,end:2000000000,final:1.000 Seconds]"));
     }
+ 
+    
+    /* DON'T NEED FOR SPRINT 1
+    @Test
+    public void testRunSwapNext(){
+    	Run run = new Run();
+    	for(int i = 0; i < 100; i++){
+    		run.addCompetitor(i);
+    	}
+    	run.swapNext();
+    	assertEquals(run.getCompetitors().indexOf(new Competitor(0)), 99);
+    	assertEquals(run.getCompetitors().indexOf(new Competitor(99)), 0);
+     
+    	run = new Run();
+    	run.swapNext();
+    	run.addCompetitor(0);
+    	run.swapNext();
+    	run.addCompetitor(1);
+    	run.swapNext();
+    	assertEquals(run.getCompetitors().indexOf(new Competitor(0)), 1);
+    	assertEquals(run.getCompetitors().indexOf(new Competitor(1)), 0);
+    }
+    */
+    
 }
 
 	

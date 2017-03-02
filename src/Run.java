@@ -107,7 +107,7 @@ public class Run {
 	 * @return String[] - A list of formatted strings that represents the
 	 *         competitors
 	 */
-	public void swapNext() {
+	public String[] swapNext() {
 		// TODO
 	}
 
@@ -153,9 +153,8 @@ public class Run {
 	 *            trigger was fired
 	 * @return Time - the difference of time from the start to the finish
 	 */
-	public void end(long l) {
-		competitors.get(curStart).end(l);
-		curFinish++;
+	public Time end(long l) {
+		cur.end(l);
 	}
 
 	/**
@@ -212,5 +211,34 @@ public class Run {
 		// TODO
 		return null;
 	}
-
+	
+	/* FOLLOWING METHODS USED FOR TESTING ONLY */
+	
+	public Competitor getCur(){
+		return cur;
+	}
+	
+	public void setCur(Competitor c){
+		cur = c;
+	}
+	
+	public ArrayList<Competitor> getCompetitors(){
+		return competitors;
+	}
+	
+	public long getEndTime(){
+		return cur.getEndTime();
+	}
+	
+	public long getStartTime(){
+		return cur.getStartTime();
+	}
+	
+	public boolean getStarted(){
+		return cur.getStarted();
+	}
+	
+	public boolean getFinished(){
+		return cur.getFinished();
+	}
 }
