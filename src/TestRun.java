@@ -2,6 +2,8 @@ package src;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+
 import org.junit.Test;
 
 public class TestRun {
@@ -9,7 +11,20 @@ public class TestRun {
 	
 	@Test
 	public void testCompetitorList(){
+		Run r = new Run();
+		r.addCompetitor(111);
+		assertEquals("Competitor: 111 --- Has Not Started", r.competitorList().get(0));
+		r.addCompetitor(122);
+		assertEquals("Competitor: 111 --- Has Not Started", r.competitorList().get(0));
+		assertEquals("Competitor: 122 --- Has Not Started", r.competitorList().get(1));
+		r.removeCompetitorByBib(111);
+		assertEquals("Competitor: 122 --- Has Not Started", r.competitorList().get(0));
+		r.addCompetitor(333);
+		r.start(1000000000);
+		assertEquals("Competitor: 122 --- Has Not Started", r.competitorList().get(0));
+		assertEquals("Competitor: 333 --- DNF", r.competitors.get(1));
 		
+
 	}
 	
 	@Test

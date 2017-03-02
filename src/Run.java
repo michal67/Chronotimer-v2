@@ -126,7 +126,8 @@ public class Run {
 	 * @return
 	 */
 	public void start(long l) {
-		cur.start(l);
+		competitors.get(curStart).start(l);
+		curStart++;
 	}
 
 	/**
@@ -153,7 +154,8 @@ public class Run {
 	 * @return Time - the difference of time from the start to the finish
 	 */
 	public void end(long l) {
-		cur.end(l);
+		competitors.get(curFinish).end(l);
+		curFinish++;
 	}
 
 	/**
