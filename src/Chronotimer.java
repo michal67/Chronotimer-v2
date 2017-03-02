@@ -26,15 +26,12 @@ public class Chronotimer{
       chan = !chan;
   }
   
-  
-  public void trigger(int channel){ trigger(channel, startTime - System.nanoTime()); }
-  
   public void trigger(int channel, long time){
     if(channels.get( channel - 1)){
       if(channel==1)
-        run.start(time);
+        run.start(startTime - time);
       else if(channel==2)
-        run.end(time);
+        run.end(startTime - time);
     }
   }
   
