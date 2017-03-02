@@ -1,8 +1,6 @@
 # Chronotimer
 
 Stuff that needs to be done:
-   -Run needs to be fixed (NICK)
-   -Competitor needs to be Fixed (NICK)
    -Finish tests for run (BRYCE / ARIS)
    -Finish tests for competitor (BRYCE / ARIS)
    -Simulation needs to be made according to the given test files (ROBERT)

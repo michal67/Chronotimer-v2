@@ -1,7 +1,5 @@
 package src;
 
-import org.junit.*;
-
 public class Competitor {
 	private int bibNum;
 	private long startTime;

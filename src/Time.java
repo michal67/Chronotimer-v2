@@ -1,8 +1,7 @@
+package src;
 import java.text.DecimalFormat;
 
 public class Time {
-
-	private long currentTime; // Stores currentTime
 	private long startTime; // Stores TimeStarted
 
 	public Time() {
@@ -20,7 +19,7 @@ public class Time {
 		return result;
 	}
 
-	public String parseTime(long a) { // Parse any integer
+	public static String parseTime(long a) { // Parse any integer
 		String result;
 		final double seconds = ((double) a / 1000000000);
 		result = new DecimalFormat("#.###").format(seconds) + " Seconds";
