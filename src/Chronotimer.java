@@ -45,7 +45,7 @@ public class Chronotimer(){
   }
   
   public void newRun(){
-    //TODO
+    run = new Run();
   }
   
   public void endRun(){
