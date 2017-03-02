@@ -14,7 +14,7 @@ public class Simulator(){
       if(input[0].equalsIgnoreCase("TOG"))
         chronotimer.toggle( Integer.parseInt( input[1]));
       else if(input[0].equalsIgnoreCase("TIME"))
-        chronotimer.setTime( input[1]);
+        chronotimer.setTime( input[1].split(":|.");
       else if(input[0].equalsIgnoreCase("TRIG"))
         chronotimer.trigger( Integer.parseInt( input[1]));
       else if(input[0].equalsIgnoreCase("EVENT"))
