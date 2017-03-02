@@ -5,12 +5,43 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 public class TestRun {
-	
-    @Test
-    public void testCompetitorRunTime(){
-    	
-    }
     
+	
+	@Test
+	public void testCompetitorList(){
+		
+	}
+	
+	@Test
+	public void testAddCompetitor(){
+		
+	}
+	
+	@Test
+	public void testClear(){
+		
+	}
+	
+	@Test
+	public void testRemoveCompetitorByPos(){
+		
+	}
+	
+	@Test
+	public void testDidNotFinish(){
+		
+	}
+	
+	@Test
+	public void testEnd2(){
+		
+	}
+	
+	@Test
+	public void testReset(){
+		
+	}
+	
     @Test
     public void testRunEnd(){
     	Run run = new Run();
@@ -54,10 +85,9 @@ public class TestRun {
     	//start(Time t)
     	Run r = new Run();
     	r.addCompetitor(1);
-    	r.cur = r.competitors.get(0);
     	r.start(1000000000);
-    	assertFalse(r.cur.getStartTime() == -1);
-    	assertTrue(r.cur.getStarted());
+    	assertFalse(r.getCur().getStartTime() == -1);
+    	assertTrue(r.getCur().getStarted());
     }
     
     @Test

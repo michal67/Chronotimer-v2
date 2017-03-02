@@ -115,7 +115,7 @@ public class Run {
 	 * indicates that the current competitor did not finish their run
 	 */
 	public void didNotFinish() {
-		competitors.get(curFinish).end(-1);
+		cur.end(-1);
 	}
 
 	/**
@@ -126,8 +126,7 @@ public class Run {
 	 * @return
 	 */
 	public void start(long l) {
-		competitors.get(curStart).start(l);
-		curStart++;
+		cur.start(l);
 	}
 
 	/**
@@ -153,7 +152,7 @@ public class Run {
 	 *            trigger was fired
 	 * @return Time - the difference of time from the start to the finish
 	 */
-	public Time end(long l) {
+	public void end(long l) {
 		cur.end(l);
 	}
 
