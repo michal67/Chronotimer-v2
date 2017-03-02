@@ -22,7 +22,8 @@ public class Chronotimer{
   
   //
   public void toggle(int channel){ //1-4
-    channels.get(channel-1) = !channels.get( channel - 1);
+	  boolean chan = channels.get(channel-1);
+      chan = !chan;
   }
   
   
