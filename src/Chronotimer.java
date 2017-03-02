@@ -1,7 +1,9 @@
 package src;
 
+import java.util.ArrayList;
+
 public class Chronotimer{
-  ArrayList<boolean> channels;
+  ArrayList<Boolean> channels;
   long startTime;
   long offsetTime;
   Run run;
@@ -20,7 +22,7 @@ public class Chronotimer{
   
   //
   public void toggle(int channel){ //1-4
-    channels.get(channel - 1) = !channels.get( channel - 1);
+    channels.get(channel-1) = !channels.get( channel - 1);
   }
   
   
