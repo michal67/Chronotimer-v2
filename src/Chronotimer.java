@@ -21,7 +21,7 @@ public class Chronotimer{
   }
   
   //
-  public void toggle(int channel){ //1-4
+  public void toggle(int channel, long time){ //1-4
 	  boolean chan = channels.get(channel-1);
       chan = !chan;
   }
@@ -37,25 +37,25 @@ public class Chronotimer{
   
   public void setTime(long time){ offsetTime = time; } 
   
-  public void setEvent(String event){
+  public void setEvent(String event, long time){
     //TODO
   }
   
-  public void newRun(){
+  public void newRun(long time){
     run = new Run();
   }
   
-  public void endRun(){
+  public void endRun(long time){
 	  
   }
   
-  public void addCompetitor(int bib){
+  public void addCompetitor(int bib, long time){
     //TODO
   }
   
   /* Returns a formatted String representing the run,
      which is outputted by Simulator */
-  public String print(){
+  public String print(long time){
     //TODO
   }
 }
