@@ -12,6 +12,11 @@ public class TestCompetitor {
 		a.start(1000);
 		assertTrue(a.getStarted());
 		assertEquals(a.getStartTime(), 1000);
+		
+		Competitor b = new Competitor(3);
+		a.start(-1);
+		assertEquals(false, b.getStarted());
+		assertEquals(-1, b.getStartTime());
 	}
 
 	@Test

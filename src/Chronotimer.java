@@ -54,6 +54,7 @@ public class Chronotimer{
   }
   
   public void endRun(){
+	  
   }
   
   public void addCompetitor(int bib){
