@@ -1,4 +1,6 @@
-public class Chronotimer(){
+package src;
+
+public class Chronotimer{
   ArrayList<boolean> channels;
   long startTime;
   long offsetTime;

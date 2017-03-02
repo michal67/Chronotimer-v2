@@ -1,4 +1,5 @@
-import static org.junit.Assert.*;
+package src;
+
 import org.junit.*;
 
 public class Competitor {

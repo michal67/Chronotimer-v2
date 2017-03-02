@@ -1,7 +1,6 @@
-import static org.junit.Assert.*;
-import org.junit.Test;
+import org.junit.*;
 
-public class Competitor{
+public class CompetitorOld{
     private long start;
     private long end;
     private int bibNum;
@@ -18,7 +17,7 @@ public class Competitor{
      * @return
      * @see
      */
-     public Competitor(int bib){
+     public CompetitorOld(int bib){
       bibNum = bib;
 		    startTime = -1;
 		    endTime = -1;
@@ -119,7 +118,7 @@ public class Competitor{
      
      @Test
      public void testCompetitorStart(){
-     	Competitor a = new Competitor(1);
+     	CompetitorOld a = new CompetitorOld(1);
      	a.start(1000);
      	assertTrue(a.started);
      	assertEquals(a.startTime,1000);
@@ -127,7 +126,7 @@ public class Competitor{
      
      @Test
      public void testCompetitorToString(){
-     	Competitor a = new Competitor(1);
+     	CompetitorOld a = new CompetitorOld(1);
      	assertEquals(a.toString(), "Competitor: 1 --- Has not Started");
      	
      	a.start(1000);
@@ -139,14 +138,14 @@ public class Competitor{
      
      @Test
      public void testCompetitorEnd(){
-		    Competitor a = new Competitor(1);
+		    CompetitorOld a = new CompetitorOld(1);
 		    a.startTime = 1000;
 		    a.started = true;
 		    a.end(2000);
 		    assertEquals(a.endTime, 2000);
 		    assertEquals(a.finished, true);
 		
-		    Competitor b = new Competitor(2);
+		    CompetitorOld b = new CompetitorOld(2);
 		    b.startTime = 1000;
 		    b.started = true;
 		    //b.end(-1);
@@ -154,14 +153,14 @@ public class Competitor{
 		    assertEquals(b.endTime, -1);
 		    assertEquals(b.finished, false);
 		
-		    Competitor c = new Competitor(3);
+		    CompetitorOld c = new CompetitorOld(3);
 		    c.startTime = -1;
 		    c.started = false;
 		    c.end(2000);
 		    assertEquals(b.endTime, -1);
 		    assertEquals(b.finished, false);
 		
-		    Competitor d = new Competitor(3);
+		    CompetitorOld d = new CompetitorOld(3);
 		    d.startTime = -1;
 		    d.started = true;
 		    d.end(2000);
@@ -171,43 +170,43 @@ public class Competitor{
 	
 	@Test 
 	public void testCompetitorRunTime(){
-		Competitor a = new Competitor(1);
+		CompetitorOld a = new CompetitorOld(1);
 		a.startTime = 1000;
 		a.started = true;
 		a.end(2000);
 		assertEquals(a.runTime(), 1000);
 		
-		Competitor b = new Competitor(2);
+		CompetitorOld b = new CompetitorOld(2);
 		b.startTime = 1000;
 		b.started = false;
 		b.end(2000);
 		assertEquals(b.runTime(), null);
 		
-		Competitor c = new Competitor(3);
+		CompetitorOld c = new CompetitorOld(3);
 		c.startTime = -1;
 		c.started = true;
 		c.end(2000);
 		assertEquals(c.runTime(), null);
 		
-		Competitor d = new Competitor(4);
+		CompetitorOld d = new CompetitorOld(4);
 		d.startTime = 1000;
 		d.started = true;
 		d.end(-1);
 		assertEquals(d.runTime(), null);
 		
-		Competitor e = new Competitor(5);
+		CompetitorOld e = new CompetitorOld(5);
 		e.startTime = null;
 		e.started = true;
 		e.end(2000);
 		assertEquals(d.runTime(), null);
 		
-		Competitor f = new Competitor(6);
+		CompetitorOld f = new CompetitorOld(6);
 		f.startTime = 1000;
 		f.started = true;
 		f.end(null);
 		assertEquals(f.runTime(), null);
 		
-		Competitor g = new Competitor(7);
+		CompetitorOld g = new CompetitorOld(7);
 		g.startTime = 2000;
 		g.started = true;
 		g.end(1000);
