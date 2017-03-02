@@ -16,8 +16,7 @@ public class Simulator{
     if(fileRead){ 
       time = parseTime(input[0]);         
       input = System.arraycopy(input, 1, input, 0, input.length - 1);
-    }
-    else
+    } else
       time = System.nanoTime();
     
     if(input[0].equalsIgnoreCase("POWER"))
