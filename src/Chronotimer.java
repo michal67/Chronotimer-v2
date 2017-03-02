@@ -33,8 +33,11 @@ public class Chronotimer(){
     }
   }
   
-  public void setTime(String time){ //Formatted as HH:MM:SS.M
-    String[] tim 
+  public void setTime(String[] time){
+    offsetTime = Long.parseLong(time[0]) * 36000 //hours
+      + Long.parseLong(time[1]) * 600 //minutes
+      + Long.parseLong(time[2]) * 10 //seconds
+      + Long.parseLong(time[3]);
   } 
   
   public void setEvent(String event){
