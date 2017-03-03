@@ -6,7 +6,6 @@ import static org.junit.Assert.*;
 
 public class Run {
 	ArrayList<Competitor> competitors;
-	Competitor cur; // the current competitor
 	int curStart;
 	int curFinish;
 
@@ -64,8 +63,9 @@ public class Run {
 		for (int i = 0; i < competitors.size(); i++) {
 			listOfCompetitors[i] = competitors.get(i).toString();
 		}
-
 		competitors.clear();
+		curStart = 0;
+		curFinish = 0;
 		return listOfCompetitors;
 	}
 
@@ -77,9 +77,15 @@ public class Run {
 	 * @return String - A formatted string that represents the competitor
 	 */
 	public String removeCompetitorByBib(int bib) {
-		for (int i = 0; i < competitors.size(); i++)
-			if (competitors.get(i).getBibNum() == bib)
+		for (int i = 0; i < competitors.size(); i++){
+			if (competitors.get(i).getBibNum() == bib){
+				if (curStart > i){
+					curStart--;
+					curFinish--;
+				}
 				return competitors.remove(i).toString();
+			}
+		}
 		return null;
 	}
 
@@ -94,7 +100,10 @@ public class Run {
 		if (competitors.size() <= position) {
 			return null;
 		}
-
+		if (curStart > position){
+			curStart--;
+			curFinish--;
+		}
 		String s = competitors.get(position).toString();
 		competitors.remove(position);
 		return s;
@@ -107,15 +116,23 @@ public class Run {
 	 * @return String[] - A list of formatted strings that represents the
 	 *         competitors
 	 */
+	
+	/*
 	public String[] swapNext() {
 		// TODO
 	}
+	*/
 
 	/**
 	 * indicates that the current competitor did not finish their run
 	 */
 	public void didNotFinish() {
-		cur.end(-1);
+		competitors.get(curFinish).end(-1);
+		if(!competitors.get(curFinish).getStarted()){
+			competitors.get(curFinish).start(0);
+		}
+		if(curFinish == curStart) curStart++;
+		curFinish++;
 	}
 
 	/**
@@ -170,6 +187,7 @@ public class Run {
 	 *            - the zero index position of the competitor to act on
 	 */
 	public void end(long t, int position) {
+		if(curFinish == position) curFinish++;
 		competitors.get(position).end(t);
 	}
 
@@ -177,15 +195,24 @@ public class Run {
 	 * resets the run of the current competitor, returns the start and end time
 	 * to a default value, the bib Number will remain intact
 	 * 
-	 * @return long[3] - a tree element array of Long containing the start time,
+	 * @return long[3] - a three element array of Long containing the start time,
 	 *         end time, and duration
 	 */
 	public long[] reset() {
+		if(curStart == curFinish){
+			curStart--;
+			curFinish--;
+		}
+		else{
+			curStart--;
+		}
+		Competitor c = competitors.get(curFinish);
+		
 		long comp[] = new long[3];
-		comp[0] = cur.getStartTime();
-		comp[1] = cur.getEndTime();
-		comp[2] = cur.runTime();
-		cur.reset();
+		comp[0] = c.getStartTime();
+		comp[1] = c.getEndTime();
+		comp[2] = c.runTime();
+		c.reset();
 		return comp;
 	}
 
@@ -215,31 +242,7 @@ public class Run {
 	
 	/* FOLLOWING METHODS USED FOR TESTING ONLY */
 	
-	public Competitor getCur(){
-		return cur;
-	}
-	
-	public void setCur(Competitor c){
-		cur = c;
-	}
-	
 	public ArrayList<Competitor> getCompetitors(){
 		return competitors;
-	}
-	
-	public long getEndTime(){
-		return cur.getEndTime();
-	}
-	
-	public long getStartTime(){
-		return cur.getStartTime();
-	}
-	
-	public boolean getStarted(){
-		return cur.getStarted();
-	}
-	
-	public boolean getFinished(){
-		return cur.getFinished();
 	}
 }
