@@ -6,14 +6,14 @@ public class Chronotimer{
   ArrayList<Boolean> channels;
   long startTime, offsetTime;
   Run run;
-  boolean runStarted;
+  boolean runStarted, eventSelected;
   
   public Chronotimer(){
 	  channels = new ArrayList<Boolean>();
     for(int i=0; i<8; i++)
       channels.add(false);
     startTime = System.nanoTime();
-    runStarted = false;
+    runStarted = eventSelected = false;
   }
   
   public Chronotimer(long time){
@@ -36,14 +36,10 @@ public class Chronotimer{
   
   public void setTime(long time){ offsetTime = time; } 
   
-  public void setEvent(String event){
-    //TODO
-    //Not necessary in current Sprint
-	  return;
-  }
+  public void setEvent(String event){eventSelected = true;}
   
   public void newRun(){
-	  if(!runStarted){
+	  if(!runStarted && eventSelected){
 		  run = new Run();
 		  runStarted = true;
 	  }
