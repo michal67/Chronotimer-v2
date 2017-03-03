@@ -54,6 +54,7 @@ public class Chronotimer{
   /* Returns a formatted String representing the run,
      which is outputted by Simulator */
   public String print(){
+	return null;
     //TODO
   }
 }
