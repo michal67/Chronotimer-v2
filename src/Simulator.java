@@ -6,7 +6,6 @@ public class Simulator{
   long time;
   
   public Simulator(boolean fileRead){
-    if(fileRead)
     chronotimer = new Chronotimer();
     powerOn = false;
     this.fileRead = fileRead;
@@ -19,44 +18,42 @@ public class Simulator{
       System.arraycopy(input, 1, input, 0, input.length - 1);
     } else
       time = System.nanoTime();
-    
     if(input[0].equalsIgnoreCase("POWER"))
       powerOn = !powerOn;
     
     else if(powerOn){
       if(input[0].equalsIgnoreCase("TOG"))
-        chronotimer.toggle( Integer.parseInt(input[1]));System.out.println("toggle");
+        chronotimer.toggle( Integer.parseInt(input[1]));
       
       else if(input[0].equalsIgnoreCase("TIME"))
-        chronotimer.setTime( parseTime(input[1]));System.out.println("time");
+        chronotimer.setTime( parseTime(input[1]));
       
       else if(input[0].equalsIgnoreCase("TRIG"))
-        chronotimer.trigger( Integer.parseInt(input[1]), time);System.out.println("trig");
+        chronotimer.trigger( Integer.parseInt(input[1]), time);
       
       else if(input[0].equalsIgnoreCase("EVENT"))
-        chronotimer.setEvent( input[1]);System.out.println("event");
+        chronotimer.setEvent(input[1]);
       
       else if(input[0].equalsIgnoreCase("NEWRUN"))
-        chronotimer.newRun();System.out.println("newrun");
+        chronotimer.newRun();
       
       else if(input[0].equalsIgnoreCase("ENDRUN"))
-        chronotimer.endRun();System.out.println("endrun");
+        chronotimer.endRun();
       
       else if(input[0].equalsIgnoreCase("NUM"))
-        chronotimer.addCompetitor( Integer.parseInt(input[1]));System.out.println("num");
+        chronotimer.addCompetitor( Integer.parseInt(input[1]));
       
       else if(input[0].equalsIgnoreCase("PRINT"))
-        System.out.println( chronotimer.print());System.out.println("print");
+        System.out.println( chronotimer.print());
     }
   }
   
   public long parseTime(String time){
-    String[] timeString = time.split(":|.");
-
-    return (Long.parseLong(timeString[0]) * 36000 //Convert to a single time unit (tenth-seconds), which is then converted to nanoseconds
-      + Long.parseLong(timeString[1]) * 600
-      + Long.parseLong(timeString[2]) * 10
+    String[] timeString = time.split(":|\\.");
+    return (Long.parseLong(timeString[0]) * 36000L //Convert to a single time unit (tenth-seconds), which is then converted to nanoseconds
+      + Long.parseLong(timeString[1]) * 600L
+      + Long.parseLong(timeString[2]) * 10L
       + Long.parseLong(timeString[3]))
-      * 100000000;
+      * 100000000L;
   }
 }

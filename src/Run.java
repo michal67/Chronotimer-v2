@@ -171,8 +171,10 @@ public class Run {
 	 * @return Time - the difference of time from the start to the finish
 	 */
 	public void end(long l) {
-		competitors.get(curFinish).end(l);
-		curFinish++;
+		if(curFinish<=curStart){
+			competitors.get(curFinish).end(l);
+			curFinish++;
+		}
 	}
 
 	/**

@@ -17,7 +17,7 @@ public class Driver {
 			Simulator simulator = new Simulator(false);
 			for (String nextLine = userPrompt.nextLine(); !nextLine.equalsIgnoreCase("EXIT"); nextLine = userPrompt
 					.nextLine())
-				simulator.input(nextLine.split(" "));
+				simulator.input(nextLine.split("\\s+"));
 		} else {
 			while (!fileBeenRead) {
 				System.out.print("Enter the full file directory: ");
@@ -27,7 +27,7 @@ public class Driver {
 
 					for (String nextLine = reader.readLine(); nextLine != null
 							&& !nextLine.equalsIgnoreCase("EXIT"); nextLine = reader.readLine())
-						simulator.input(nextLine.split(" "));
+						simulator.input(nextLine.split("\\s+"));
 					fileBeenRead = true;
 					reader.close();
 				} catch (FileNotFoundException e) {

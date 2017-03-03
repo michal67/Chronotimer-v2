@@ -9,9 +9,11 @@ public class Chronotimer{
   boolean runStarted;
   
   public Chronotimer(){
+	  channels = new ArrayList<Boolean>();
     for(int i=0; i<8; i++)
       channels.add(false);
     startTime = System.nanoTime();
+    runStarted = false;
   }
   
   public Chronotimer(long time){
@@ -21,17 +23,14 @@ public class Chronotimer{
   }
   
   //
-  public void toggle(int channel){ //1-4
-	  boolean chan = channels.get(channel-1);
-      chan = !chan;
-  }
+  public void toggle(int channel){ channels.set(channel-1, !channels.get(channel-1)); }
   
   public void trigger(int channel, long time){
-    if(channels.get( channel - 1) && runStarted){
+    if(channels.get(channel-1) && runStarted){
       if(channel==1)
-        run.start(startTime - time);
+        run.start(time - startTime);
       else if(channel==2)
-        run.end(startTime - time);
+        run.end(time - startTime);
     }
   }
   
@@ -40,11 +39,14 @@ public class Chronotimer{
   public void setEvent(String event){
     //TODO
     //Not necessary in current Sprint
+	  return;
   }
   
   public void newRun(){
-	  if(!runStarted)
+	  if(!runStarted){
 		  run = new Run();
+		  runStarted = true;
+	  }
   }
   
   public void endRun(){ runStarted=false; }
@@ -53,8 +55,8 @@ public class Chronotimer{
   
   /* Returns a formatted String representing the run,
      which is outputted by Simulator */
-  public String print(){
-	return competitorList();
+  public ArrayList<String> print(){
+	return run.competitorList();
     //TODO
   }
 }

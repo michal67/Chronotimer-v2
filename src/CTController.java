@@ -1,15 +1,13 @@
+package src;
+
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class CTController {
 	// For getting input if from console;
 	private Scanner input = new Scanner(System.in);
-	private boolean fileRead; // If reading from file, will be true;
 
-	public CTController() {
-		fileRead = controlFromFile(); // TEMP: get user control form
-
-	}
+	public CTController() {}
 
 	public boolean controlFromFile() {
 		// Prompt for Entry
@@ -22,7 +20,7 @@ public class CTController {
 			boolean test = false;
 			while (test == false){
 			    try{
-			    	System.out.print("Entry: "); // Recieve entry
+			    	System.out.print("Entry: "); // Receive entry
 			        response = input.nextInt();
 			        test = true;
 			        } catch (InputMismatchException e) {
@@ -38,10 +36,10 @@ public class CTController {
 
 		if (response == 1) { // Return true when 1
 			System.out.println("You have chosen console control.");
-			return true;
+			return false;
 		} else // Return fasle when 2
 			System.out.println("You have chosen file read.");
-		return false;
+		return true;
 	}
 
 }
