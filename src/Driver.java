@@ -17,7 +17,7 @@ public class Driver {
 					BufferedReader reader = new BufferedReader(new FileReader(userPrompt.nextLine()));
 					Simulator simulator = new Simulator(true);
 				
-					for(String nextLine = reader.nextLine(); nextLine != null; nextLine = reader.nextLine())
+					for(String nextLine = reader.nextLine(); nextLine != null && !nextLine.equalsIgnoreCase("EXIT"); nextLine = reader.nextLine())
 						simulator.input(nextLine.split(" "));
 					fileBeenRead = true;
 				}
