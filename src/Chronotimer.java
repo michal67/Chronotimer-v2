@@ -4,9 +4,9 @@ import java.util.ArrayList;
 
 public class Chronotimer{
   ArrayList<Boolean> channels;
-  long startTime;
-  long offsetTime;
+  long startTime, offsetTime;
   Run run;
+  boolean runStarted;
   
   public Chronotimer(){
     for(int i=0; i<8; i++)
@@ -21,7 +21,7 @@ public class Chronotimer{
   }
   
   //
-  public void toggle(int channel, long time){ //1-4
+  public void toggle(int channel){ //1-4
 	  boolean chan = channels.get(channel-1);
       chan = !chan;
   }
@@ -37,25 +37,23 @@ public class Chronotimer{
   
   public void setTime(long time){ offsetTime = time; } 
   
-  public void setEvent(String event, long time){
+  public void setEvent(String event){
     //TODO
+    //Not necessary in current Sprint
   }
   
-  public void newRun(long time){
-    run = new Run();
+  public void newRun(){
+	  if(!runStarted)
+		  run = new Run();
   }
   
-  public void endRun(long time){
-	  
-  }
+  public void endRun(){ runStarted=false; }
   
-  public void addCompetitor(int bib, long time){
-    //TODO
-  }
+  public void addCompetitor(int bib){ run.addCompetitor(bib); }
   
   /* Returns a formatted String representing the run,
      which is outputted by Simulator */
-  public String print(long time){
+  public String print(){
     //TODO
   }
 }
