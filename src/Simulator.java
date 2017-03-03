@@ -16,7 +16,7 @@ public class Simulator{
     //Special case for a file read where the command is prefixed by a time in HH:MM:SS.S formatting
     if(fileRead){ 
       time = parseTime(input[0]);         
-      input = System.arraycopy(input, 1, input, 0, input.length - 1);
+      System.arraycopy(input, 1, input, 0, input.length - 1);
     } else
       time = System.nanoTime();
     
