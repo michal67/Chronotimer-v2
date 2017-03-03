@@ -6,6 +6,7 @@ public class Simulator{
   long time;
   
   public Simulator(boolean fileRead){
+    if(fileRead)
     chronotimer = new Chronotimer();
     powerOn = false;
     this.fileRead = fileRead;
