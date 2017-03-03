@@ -25,7 +25,7 @@ public class Simulator{
     
     else if(powerOn){
       if(input[0].equalsIgnoreCase("TOG"))
-        chronotimer.toggle( Integer.parseInt(input[1]));System.out.prinln("toggle");
+        chronotimer.toggle( Integer.parseInt(input[1]));System.out.println("toggle");
       
       else if(input[0].equalsIgnoreCase("TIME"))
         chronotimer.setTime( parseTime(input[1]));System.out.println("time");
