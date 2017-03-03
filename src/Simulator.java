@@ -11,16 +11,21 @@ public class Simulator{
     this.fileRead = fileRead;
   }
   
+  /** Takes input from a file or console passed by Driver, and parses it into a method for use by the Chronotimer */
   public void input(String[] input){
-    //Special case for a file read where the command is prefixed by a time in HH:MM:SS.S formatting
+    //Special case for a file read - instead of using system time, parses and stores the time prefixing the commands in the file
     if(fileRead){ 
       time = parseTime(input[0]);         
       System.arraycopy(input, 1, input, 0, input.length - 1);
     } else
       time = System.nanoTime();
+    
+    //If power is on, turn it off, and vice versa
     if(input[0].equalsIgnoreCase("POWER"))
       powerOn = !powerOn;
     
+    /*Instead of resetting everything, the program is put on standby when the power is turned off
+     * If power is on, read the command and pass it to the proper method in Chronotimer */
     else if(powerOn){
       if(input[0].equalsIgnoreCase("TOG"))
         chronotimer.toggle( Integer.parseInt(input[1]));
@@ -48,6 +53,7 @@ public class Simulator{
     }
   }
   
+  /** Turns time formatted in HH:MM:SS.S to a long */
   public long parseTime(String time){
     String[] timeString = time.split(":|\\.");
     return (Long.parseLong(timeString[0]) * 36000L //Convert to a single time unit (tenth-seconds), which is then converted to nanoseconds

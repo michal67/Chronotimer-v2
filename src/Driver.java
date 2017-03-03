@@ -13,24 +13,26 @@ public class Driver {
 		Scanner userPrompt = new Scanner(System.in);
 		boolean fileBeenRead = false;
 
-		if (!control.controlFromFile()) {
+		if (!control.controlFromFile()) { //controlFromFile returns false if the user select to read from console
 			Simulator simulator = new Simulator(false);
 			for (String nextLine = userPrompt.nextLine(); !nextLine.equalsIgnoreCase("EXIT"); nextLine = userPrompt
 					.nextLine())
-				simulator.input(nextLine.split("\\s+"));
-		} else {
-			while (!fileBeenRead) {
+				simulator.input(nextLine.split("\\s+")); //Until EXIT is entered, pass it as an array to simulator split by whitespace
+		}
+		else {
+			while (!fileBeenRead) { //loops until user enters a valid filepath
 				System.out.print("Enter the full file directory: ");
+				
 				try {
 					BufferedReader reader = new BufferedReader(new FileReader(userPrompt.nextLine()));
 					Simulator simulator = new Simulator(true);
 
-					for (String nextLine = reader.readLine(); nextLine != null
-							&& !nextLine.equalsIgnoreCase("EXIT"); nextLine = reader.readLine())
+					for (String nextLine = reader.readLine(); nextLine != null && !nextLine.equalsIgnoreCase("EXIT"); nextLine = reader.readLine())
 						simulator.input(nextLine.split("\\s+"));
 					fileBeenRead = true;
 					reader.close();
-				} catch (FileNotFoundException e) {
+				}
+				catch (FileNotFoundException e) {
 					System.out.println("Invalid filepath");
 				}
 			}
