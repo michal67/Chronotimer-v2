@@ -51,7 +51,10 @@ public class Competitor {
 	 * and sets finishing time to -1 and finished to false to signify DNF
 	 */
 	public void end(long time) {
-		if (startTime > time) {
+		if(!started){
+			endTime = -1;
+			finished = false;
+		} else if (startTime > time) {
 			this.endTime = -1;
 			finished = false;
 		} else if(time < 0){
