@@ -56,7 +56,7 @@ public class Simulator{
     return (Long.parseLong(timeString[0]) * 36000 //Convert to a single time unit (tenth-seconds), which is then converted to nanoseconds
       + Long.parseLong(timeString[1]) * 600
       + Long.parseLong(timeString[2]) * 10
-      + Long.parseLong(timeString[3]) *)
+      + Long.parseLong(timeString[3]))
       * 100000000;
   }
 }
