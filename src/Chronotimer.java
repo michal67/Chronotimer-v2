@@ -27,7 +27,7 @@ public class Chronotimer{
   }
   
   public void trigger(int channel, long time){
-    if(channels.get( channel - 1)){
+    if(channels.get( channel - 1) && runStarted){
       if(channel==1)
         run.start(startTime - time);
       else if(channel==2)
