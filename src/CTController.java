@@ -37,10 +37,10 @@ public class CTController {
 		} while (response < 1 || response > 2); // Break out when 1 or 2
 
 		if (response == 1) { // Return true when 1
-			System.out.println("You have chosen file read.");
+			System.out.println("You have chosen console control.");
 			return true;
 		} else // Return fasle when 2
-			System.out.println("You have chosen console control.");
+			System.out.println("You have chosen file read.");
 		return false;
 	}
 
