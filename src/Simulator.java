@@ -25,28 +25,28 @@ public class Simulator{
     
     else if(powerOn){
       if(input[0].equalsIgnoreCase("TOG"))
-        chronotimer.toggle( Integer.parseInt(input[1]), time);
+        chronotimer.toggle( Integer.parseInt(input[1]));
       
       else if(input[0].equalsIgnoreCase("TIME"))
-        chronotimer.setTime( parseTime(input[1]), time);
+        chronotimer.setTime( parseTime(input[1]));
       
       else if(input[0].equalsIgnoreCase("TRIG"))
         chronotimer.trigger( Integer.parseInt(input[1]), time);
       
       else if(input[0].equalsIgnoreCase("EVENT"))
-        chronotimer.setEvent( input[1], time);
+        chronotimer.setEvent( input[1]);
       
       else if(input[0].equalsIgnoreCase("NEWRUN"))
-        chronotimer.newRun(time);
+        chronotimer.newRun();
       
       else if(input[0].equalsIgnoreCase("ENDRUN"))
-        chronotimer.endRun(time);
+        chronotimer.endRun();
       
       else if(input[0].equalsIgnoreCase("NUM"))
-        chronotimer.addCompetitor( Integer.parseInt(input[1]), time);
+        chronotimer.addCompetitor( Integer.parseInt(input[1]));
       
       else if(input[0].equalsIgnoreCase("PRINT"))
-        System.out.println( chronotimer.print(), time);
+        System.out.println( chronotimer.print());
     }
   }
   
