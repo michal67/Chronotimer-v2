@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Chronotimer{
   ArrayList<Boolean> channels;
   long startTime, offsetTime;
-  Run run;
+  ArrayList<Race> races;
   boolean runStarted, eventSelected;
   
   public Chronotimer(){
@@ -29,12 +29,7 @@ public class Chronotimer{
   /** If the channel is on and there's an active run,
    * start a new competitor if channel 1, end a competitor if channel 2. */
   public void trigger(int channel, long time){
-    if(channels.get(channel-1) && runStarted){
-      if(channel==1)
-        run.start(time - startTime);
-      else if(channel==2)
-        run.end(time - startTime);
-    }
+    if(channels.get(channel-1) && runStarted){ run.trigger(time - startTime); }
   }
   
   /** Sets the time offset in the file */
