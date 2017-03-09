@@ -25,11 +25,22 @@ public class ParaInd {
 	 * 		the channel that was triggered
 	 */
 	public void trigger(int channel, long time){
-		if(channel == 1 || channel == 2)
+		if(channel == 1 && !laneOneHasStarted){
 			start(channel, time);
-		if(channel == 3 || channel = 4)
+			laneOneHasStarted = true;
+		}
+		else if(channel == 2 && !laneTwoHasStarted){
+			start(channel, time);
+			laneOneHasStarted = true;
+		}
+		else if(channel == 3 && laneOneHasStarted){
 			end(channel, time);
-		
+			laneOneHasStarted = false;
+		}
+		else if(channel == 4 && laneTwoHasStarted){
+			end(channel, time);
+			laneTwoHasStarted = false;
+		}
 	}
 
 	/**
@@ -156,7 +167,7 @@ public class ParaInd {
 	 *            - the time the trigger was fired
 	 * @return
 	 */
-	public void start(long l) {
+	public void start(int channel, long l) {
 		competitors.get(curStart).start(l);
 		curStart++;
 	}
