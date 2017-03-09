@@ -1,10 +1,13 @@
+//TODO THIS METHOD NEEDS TO BE CLEANED UP AND ALLOW THE USE OF THE NEW SYSTEM. AS WELL AS JSON BEING UPDATED,
+	//PROBABLY NOT TO MUCH TO DO HERE. WE MAY WANT TO LOOK AT SENDING INFOR WHEN THE LAST RUNNER HAS FINISHED?
+
 package src;
 
 import java.util.ArrayList;
 import org.junit.*;
 import static org.junit.Assert.*;
 
-public class Run {
+public class Ind extends Race {
 	ArrayList<Competitor> competitors;
 	int curStart;
 	int curFinish;
@@ -12,7 +15,7 @@ public class Run {
 	/**
 	 * the constructor that creates the run, with default values
 	 */
-	public Run() {
+	public Ind() {
 		competitors = new ArrayList<Competitor>();
 		curStart = 0;
 		curFinish = 0;
@@ -231,6 +234,7 @@ public class Run {
 		return competitors.get(position).runTime();
 	}
 
+	//TODO CHANGE TO JSON and impliment, should add info on race and the info from competitors.
 	/**
 	 * provides the XML for this run
 	 * 
@@ -238,7 +242,6 @@ public class Run {
 	 * @see Image
 	 */
 	public String toXML() {
-		// TODO
 		return null;
 	}
 	
