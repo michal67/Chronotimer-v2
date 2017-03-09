@@ -4,18 +4,32 @@ import java.util.ArrayList;
 import org.junit.*;
 import static org.junit.Assert.*;
 
-public class Run {
+public class ParaInd {
 	ArrayList<Competitor> competitors;
-	int curStart;
-	int curFinish;
+	int laneOne, laneTwo;
+	boolean laneOneHasStarted, laneTwoHasStarted;
 
 	/**
 	 * the constructor that creates the run, with default values
 	 */
-	public Run() {
+	public ParaInd() {
 		competitors = new ArrayList<Competitor>();
-		curStart = 0;
-		curFinish = 0;
+		lane1 = 0;
+		lane2 = 0;
+	}
+	
+	/**
+	 * calls either start() or end() depending on the channel
+	 *
+	 * @param channel
+	 * 		the channel that was triggered
+	 */
+	public void trigger(int channel, long time){
+		if(channel == 1 || channel == 2)
+			start(channel, time);
+		if(channel == 3 || channel = 4)
+			end(channel, time);
+		
 	}
 
 	/**
