@@ -10,6 +10,14 @@ public class Simulator{
     powerOn = false;
     this.fileRead = fileRead;
   }
+  //TODO Add functionality read ins for these requirements:
+  /**
+   * Be	able	to	handle	Parallel	runs	with two	racers.
+   * 2. Be	able	to	save	the	results	of	a	run	at	the	end	of	a	run	(ENDRUN).		If	the	
+   * system	stops	before	then,	no	need	to	save	the	data.
+   * 3. Run	your	program	with	both	your	own	data	(system	test)	and	supplied	data	
+   * (customer	acceptance).	
+   */
   
   /** Takes input from a file or console passed by Driver, and parses it into a method for use by the Chronotimer */
   public void input(String[] input){
