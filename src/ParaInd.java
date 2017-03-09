@@ -19,10 +19,13 @@ public class ParaInd {
 	}
 	
 	/**
-	 * calls either start() or end() depending on the channel
+	 * calls start if channel 1 or 2, and the appropriate lane has not started
+	 * calls end if channel 3 or 4, and the appropriate lane has started
 	 *
 	 * @param channel
 	 * 		the channel that was triggered
+	 * @param time
+	 *		the time that the sensor was triggered
 	 */
 	public void trigger(int channel, long time){
 		if(channel == 1 && !laneOneHasStarted){
