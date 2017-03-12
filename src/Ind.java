@@ -142,6 +142,22 @@ public class Run {
 	 *            - the time the trigger was fired
 	 * @return
 	 */
+	
+	//TODO SOMEONE CHECK THIS??
+	public void trigger(long l, channel c){
+		if(channel == 1){
+			competitors.get(curStart).start(l);
+			curStart++;
+		} else if (channel == 2) {
+			if(curFinish<=curStart) {
+				competitors.get(curFinish).end(l);
+				curFinish++;
+			}
+		} else {
+			return;
+		}
+	}
+	
 	public void start(long l) {
 		competitors.get(curStart).start(l);
 		curStart++;
